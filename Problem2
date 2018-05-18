@@ -1,0 +1,18 @@
+    var sumofevenfibonacci = 2;
+    var limitnumberoftheserie = 4000000;
+
+
+        for ( fibonacciSerie = [1,2]; fibonacciSerie[fibonacciSerie.length-1] <= limitnumberoftheserie ; ) {
+            var newSerieElement = fibonacciSerie[fibonacciSerie.length -1 ] + fibonacciSerie[fibonacciSerie.length - 2];
+            fibonacciSerie.push(newSerieElement); 
+            if (newSerieElement%2==0) {
+                sumofevenfibonacci = sumofevenfibonacci + newSerieElement;
+            }
+        }
+        if ((fibonacciSerie[fibonacciSerie.length-1]>limitnumberoftheserie)&&(fibonacciSerie[fibonacciSerie.length-1]%2==0)) {
+            sumofevenfibonacci += fibonacciSerie[fibonacciSerie.length-1]
+        }
+        if (fibonacciSerie[fibonacciSerie.length-1]>limitnumberoftheserie) {
+            fibonacciSerie.splice((fibonacciSerie.length-1),2)
+        }
+        console.log(sumofevenfibonacci);
