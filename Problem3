@@ -1,0 +1,49 @@
+var numberlimit = 125;
+var numberPrimerization = numberlimit;
+var primesfactor = [2,3,5,7];
+var productofprimes = 0;
+var factor = 0;
+var primes = [];
+var x = 0;
+while (productofprimes < numberlimit) {
+            while (numberPrimerization % primesfactor[x] === 0) {
+                factor = primesfactor[x];
+                if (numberPrimerization/factor == 1) {
+                    primes.push(factor);
+                    numberPrimerization = numberPrimerization / factor;
+                    productofprimes = primes.reduce(function(accumulator, currentValue) {
+                        return accumulator * currentValue;
+                    });
+                } else {
+                    primes.push(factor);
+                    productofprimes = primes.reduce(function(accumulator, currentValue) {
+                        return accumulator * currentValue;
+                    });
+                    numberPrimerization = numberPrimerization / factor;
+                }
+        }
+        if(x <= primesfactor.length -2){
+        x = x+1;
+        } else { while((productofprimes < numberlimit) && (numberPrimerization%primesfactor[primesfactor.length -1] != 0)) {
+                                var counter = 9;
+                                var testnumber = 13;
+                                var excludednumber = [4,6,8];
+                                function checkdivisibility(test) {
+                                    return counter%test === 0;
+                                }
+                                while ( primesfactor.length == x + 1) {
+                                    if(primesfactor.find(checkdivisibility)) {
+                                    
+                                    excludednumber.push(counter);
+                                    counter = counter + 1;
+                                    } else {
+                                        primesfactor.push(counter);
+                                            counter = counter + 1;
+                                    }
+                                }
+                                x= x +1; 
+                            }      
+        }
+    }
+    console.log(primes);
+    console.log(productofprimes);
