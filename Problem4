@@ -1,0 +1,40 @@
+var lastNumber = 999;
+var counter = [];
+var productofNumbers = [];
+var y = 0;
+var digits;
+var x = 0;
+var validationPalindrome = [];
+var productofvalidation = [];
+var palindromes = [];
+
+function checkPalindrome(numbertoCheck) {
+    var digits = (""+numbertoCheck).split("");
+    for(a=0;a<digits.length/2;a=a+1) {
+        if(digits[a]==digits[digits.length-a-1]) {
+            validationPalindrome.push(1)
+        } else {
+            validationPalindrome.push(0)
+        }
+    }
+    productofvalidation= validationPalindrome.reduce(function(accumulator, currentValue) {
+        return accumulator * currentValue;
+    });
+    validationPalindrome = [];
+    if (productofvalidation==1) {
+        palindromes.push(numbertoCheck);
+    }
+   
+}
+for(lastNumber=999; lastNumber>99; lastNumber=lastNumber-1) {
+    counter.push(lastNumber);
+    for(x;x<=counter.length-1;x=x+1){
+        x=counter.length-1;
+        for(y=0;y<=counter.length-1;y=y+1) {
+            productofNumbers=counter[x]*counter[y]
+            checkPalindrome(productofNumbers);
+        }
+    } 
+}
+var testete = Math.max(...palindromes);
+console.log(testete);
